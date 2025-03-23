@@ -5,6 +5,7 @@ import {
   ChatInputCommandInteraction,
   Client,
   ComponentType,
+  PermissionFlagsBits,
 } from "discord.js";
 import { getCommunities, getCommunity } from "../../cw";
 import { createProgressSteps } from "../../utils/progress";
@@ -105,6 +106,17 @@ export const handleDoCommand = async (
       return;
     }
     case "mint": {
+      // Check if a member has the MANAGE_GUILD permission
+      if (
+        typeof interaction.member.permissions === "string" ||
+        !interaction.member.permissions.has(PermissionFlagsBits.ManageGuild)
+      ) {
+        await interaction.editReply({
+          content: "Only server admins can perform this action.",
+        });
+        return;
+      }
+
       const mintResponse = response as MintTaskArgs;
 
       const community = getCommunity(mintResponse.alias);
@@ -123,6 +135,17 @@ export const handleDoCommand = async (
       return;
     }
     case "burn": {
+      // Check if a member has the MANAGE_GUILD permission
+      if (
+        typeof interaction.member.permissions === "string" ||
+        !interaction.member.permissions.has(PermissionFlagsBits.ManageGuild)
+      ) {
+        await interaction.editReply({
+          content: "Only server admins can perform this action.",
+        });
+        return;
+      }
+
       const burnResponse = response as BurnTaskArgs;
 
       const community = getCommunity(burnResponse.alias);
