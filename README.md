@@ -20,6 +20,16 @@ This also works in the discord mobile app.
 
 The user's Safe is operated via the ai wallet's server through a module. If the user would like to take control of their account, they can always use the "/add-owner" command to specify the 0x address of an EOA to be added as a signer to their Safe. From here, they can always disable the module and completely take over the Safe if they want.
 
+## Submission
+
+Try Discord AI Wallet on [our server](https://discord.citizenwallet.xyz).
+
+View demo transaction [here](https://celoscan.io/tx/0x2aef2ff484696bf23d5499805e2f04336aab112fac85f1a5f9d0709bdaf80a0a).
+
+View demo Safe assets [here](https://app.safe.global/balances?safe=celo:0x1C0032270925D0f858A231b240F294950cB2e14C).
+
+View demo Safe transaction history [here](https://app.safe.global/transactions/history?safe=celo:0x1C0032270925D0f858A231b240F294950cB2e14C).
+
 ## Setup
 
 1. Clone this repository
