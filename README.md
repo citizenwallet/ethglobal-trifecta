@@ -1,5 +1,7 @@
 # Discord AI Wallet
 
+Note: takes its boilerplate from the citizen wallet bot. all the work to make the ai wallet was done during this hackathon. you can check the commit history. some of the work done during this hackathon is already deployed to production, you can check the commit history to see the timing.
+
 This project combines the discord user interface that people are already familiar with, with an in-chat ai wallet that you can interact with using natural language. 
 
 Every discord user id is converted into a counter-factual Safe (multi-sig) which each discord user in your server can operate via commands. 
