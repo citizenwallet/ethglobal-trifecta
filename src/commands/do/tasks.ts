@@ -25,6 +25,11 @@ export interface ShareAddressTaskArgs {
   alias: string;
 }
 
+export interface ShareBalanceTaskArgs {
+  name: string;
+  alias: string;
+}
+
 export interface MissingInformationTaskArgs {
   name: string;
   missingInformation: string;
@@ -41,6 +46,7 @@ export interface DoTask {
     | "address"
     | "balance"
     | "shareAddress"
+    | "shareBalance"
     | "error"
     | "missingInformation";
   purpose: string;
@@ -49,6 +55,7 @@ export interface DoTask {
     | AddressTaskArgs
     | BalanceTaskArgs
     | ShareAddressTaskArgs
+    | ShareBalanceTaskArgs
     | ErrorTaskArgs
     | MissingInformationTaskArgs;
 }
@@ -95,6 +102,16 @@ export const ExampleShareAddressTask: DoTask = {
   },
 };
 
+export const ExampleShareBalanceTask: DoTask = {
+  name: "shareBalance",
+  purpose:
+    "Share the user's balance for the community they have specified (this will go in the alias field). Try to determine which community alias the user is referring to from the ones provided below.",
+  args: {
+    name: "shareBalance",
+    alias: "alias1",
+  },
+};
+
 export const ExampleMissingInformationTask: DoTask = {
   name: "missingInformation",
   purpose: "Handle a missing information",
@@ -109,6 +126,7 @@ export const ExampleErrorTask: DoTask = {
   purpose: "Handle an error",
   args: {
     name: "error",
-    error: "I am only able to perform the following: send, reveal address",
+    error:
+      "I am only able to perform the following: send, address, balance, shareAddress, shareBalance",
   },
 };

@@ -9,11 +9,13 @@ import {
   AddressTaskArgs,
   BalanceTaskArgs,
   ShareAddressTaskArgs,
+  ShareBalanceTaskArgs,
 } from "./tasks";
 import { sendCommand } from "../send";
 import { addressCommand } from "../address";
 import { balanceCommand } from "../balance";
 import { shareAddressCommand } from "../shareAddress";
+import { shareBalanceCommand } from "../shareBalance";
 
 export const handleDoCommand = async (
   client: Client,
@@ -42,8 +44,6 @@ export const handleDoCommand = async (
 
   const response = await parseDoTask(task, communities);
 
-  console.log(response);
-
   switch (response.name) {
     case "send":
       await sendCommand(client, interaction, response as SendTaskArgs);
@@ -56,6 +56,9 @@ export const handleDoCommand = async (
       break;
     case "shareAddress":
       await shareAddressCommand(interaction, response as ShareAddressTaskArgs);
+      break;
+    case "shareBalance":
+      await shareBalanceCommand(interaction, response as ShareBalanceTaskArgs);
       break;
     case "missingInformation":
       const missingInformationResponse = response as MissingInformationTaskArgs;
