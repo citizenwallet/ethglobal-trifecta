@@ -1,6 +1,24 @@
-# Discord Bot
+# Discord AI Wallet
 
-A Discord bot powered by discord.js and TypeScript.
+This project combines the discord user interface that people are already familiar with, with an in-chat ai wallet that you can interact with using natural language. 
+
+Every discord user id is converted into a counter-factual Safe (multi-sig) which each discord user in your server can operate via commands. 
+
+Just type "/do" and then describe what you would like to do and the ai wallet will attempt to do it.
+
+Operations that require confirmation will display a summary of the action that will be taken and buttons to confirm the action.
+
+An LLM parses what you describe and attempts to match it against a set of possible tasks it is able to do. 
+
+If you are unsure of what you can do, ask for help from the bot and it will list what it is capable of.
+
+The ai wallet can be installed on any discord server and configured for any ERC20 token that the server would like to make available to their users.
+
+The idea is to make it easy for anyone interact with the server tokens but also to bring the interaction where the conversation is. You can have a discussion within your server about a task and its completion and, upon completion, send the other person some tokens without ever leaving discord. 
+
+This also works in the discord mobile app.
+
+The user's Safe is operated via the ai wallet's server through a module. If the user would like to take control of their account, they can always use the "/add-owner" command to specify the 0x address of an EOA to be added as a signer to their Safe. From here, they can always disable the module and completely take over the Safe if they want.
 
 ## Setup
 
