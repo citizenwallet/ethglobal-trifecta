@@ -1,20 +1,12 @@
 import express from "express";
 import { Client, Events, GatewayIntentBits } from "discord.js";
 import "dotenv/config";
-import { handleBalanceCommand } from "./commands/balance";
-import { handleAddressCommand } from "./commands/address";
-import { handleSendCommand } from "./commands/send";
 import { registerCommands } from "./register-commands";
-import { handleMintCommand } from "./commands/mint";
-import { handleBurnCommand } from "./commands/burn";
 import { handleTransactionsCommand } from "./commands/transactions";
 import { handleAddOwnerCommand } from "./commands/addOwner";
 import { handleTokenAutocomplete } from "./autocomplete/token";
 import { handleSignupCommand } from "./commands/signup";
 import { handleSignupModal } from "./modals/signup";
-import { handleShowBalanceCommand } from "./commands/shareBalance";
-import { handleShareAddressCommand } from "./commands/shareAddress";
-import { handleBurnManyCommand } from "./commands/burn-many";
 import { handleDoCommand } from "./commands/do";
 
 // Create a new client instance
@@ -79,32 +71,8 @@ client.on(Events.InteractionCreate, async (interaction) => {
     case "do":
       await handleDoCommand(client, interaction);
       break;
-    case "balance":
-      await handleBalanceCommand(interaction);
-      break;
-    case "share-balance":
-      await handleShowBalanceCommand(interaction);
-      break;
-    case "address":
-      await handleAddressCommand(interaction);
-      break;
-    case "share-address":
-      await handleShareAddressCommand(interaction);
-      break;
     case "transactions":
       await handleTransactionsCommand(interaction);
-      break;
-    case "send":
-      await handleSendCommand(client, interaction);
-      break;
-    case "mint":
-      await handleMintCommand(client, interaction);
-      break;
-    case "burn":
-      await handleBurnCommand(client, interaction);
-      break;
-    case "burn-many":
-      await handleBurnManyCommand(client, interaction);
       break;
     case "add-owner":
       await handleAddOwnerCommand(client, interaction);
