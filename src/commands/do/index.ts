@@ -18,6 +18,7 @@ import {
   ShareAddressTaskArgs,
   ShareBalanceTaskArgs,
   MintTaskArgs,
+  BurnTaskArgs,
 } from "./tasks";
 import { sendCommand } from "../send";
 import { addressCommand } from "../address";
@@ -25,6 +26,7 @@ import { balanceCommand } from "../balance";
 import { shareAddressCommand } from "../shareAddress";
 import { shareBalanceCommand } from "../shareBalance";
 import { mintCommand } from "../mint";
+import { burnCommand } from "../burn";
 
 export const handleDoCommand = async (
   client: Client,
@@ -117,6 +119,22 @@ export const handleDoCommand = async (
 
       await confirmAction(client, interaction, message, (client, interaction) =>
         mintCommand(client, interaction, mintResponse)
+      );
+      return;
+    }
+    case "burn": {
+      const burnResponse = response as BurnTaskArgs;
+
+      const community = getCommunity(burnResponse.alias);
+
+      let message = `🔥 Burn **${burnResponse.amount}${community.primaryToken.symbol}** from ${burnResponse.user}`;
+      if (burnResponse.message) {
+        message += ` with the message: ${burnResponse.message}`;
+      }
+      message += "?";
+
+      await confirmAction(client, interaction, message, (client, interaction) =>
+        burnCommand(client, interaction, burnResponse)
       );
       return;
     }

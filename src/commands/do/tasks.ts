@@ -38,6 +38,14 @@ export interface MintTaskArgs {
   message: string;
 }
 
+export interface BurnTaskArgs {
+  name: string;
+  alias: string;
+  user: string;
+  amount: number;
+  message: string;
+}
+
 export interface MissingInformationTaskArgs {
   name: string;
   missingInformation: string;
@@ -56,6 +64,7 @@ export interface DoTask {
     | "shareAddress"
     | "shareBalance"
     | "mint"
+    | "burn"
     | "error"
     | "missingInformation";
   purpose: string;
@@ -66,6 +75,7 @@ export interface DoTask {
     | ShareAddressTaskArgs
     | ShareBalanceTaskArgs
     | MintTaskArgs
+    | BurnTaskArgs
     | ErrorTaskArgs
     | MissingInformationTaskArgs;
 }
@@ -136,6 +146,19 @@ export const ExampleMintTask: DoTask = {
   },
 };
 
+export const ExampleBurnTask: DoTask = {
+  name: "burn",
+  purpose:
+    "Burn a token, the token is resolved via the alias. Message is optional (empty string).",
+  args: {
+    name: "burn",
+    alias: "alias1",
+    user: "@JohnDoe",
+    amount: 100,
+    message: "{any message the user would like to include goes here}",
+  },
+};
+
 export const ExampleMissingInformationTask: DoTask = {
   name: "missingInformation",
   purpose: "Handle a missing information",
@@ -151,6 +174,6 @@ export const ExampleErrorTask: DoTask = {
   args: {
     name: "error",
     error:
-      "I am only able to perform the following: send, address, balance, shareAddress, shareBalance",
+      "I am only able to perform the following: send, address, balance, shareAddress, shareBalance, mint, burn",
   },
 };
