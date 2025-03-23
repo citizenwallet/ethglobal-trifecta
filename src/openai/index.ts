@@ -6,6 +6,7 @@ import {
   ExampleBalanceTask,
   ExampleDoTask,
   ExampleErrorTask,
+  ExampleMintTask,
   ExampleMissingInformationTask,
   ExampleShareAddressTask,
   ExampleShareBalanceTask,
@@ -79,6 +80,7 @@ export const parseDoTask = async (
             ExampleBalanceTask,
             ExampleShareAddressTask,
             ExampleShareBalanceTask,
+            ExampleMintTask,
           ],
           communities
         ),

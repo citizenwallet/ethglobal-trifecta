@@ -30,6 +30,14 @@ export interface ShareBalanceTaskArgs {
   alias: string;
 }
 
+export interface MintTaskArgs {
+  name: string;
+  alias: string;
+  users: string[];
+  amount: number;
+  message: string;
+}
+
 export interface MissingInformationTaskArgs {
   name: string;
   missingInformation: string;
@@ -47,6 +55,7 @@ export interface DoTask {
     | "balance"
     | "shareAddress"
     | "shareBalance"
+    | "mint"
     | "error"
     | "missingInformation";
   purpose: string;
@@ -56,19 +65,21 @@ export interface DoTask {
     | BalanceTaskArgs
     | ShareAddressTaskArgs
     | ShareBalanceTaskArgs
+    | MintTaskArgs
     | ErrorTaskArgs
     | MissingInformationTaskArgs;
 }
 
 export const ExampleDoTask: DoTask = {
   name: "send",
-  purpose: "Send a token to another user, the token is resolved via the alias",
+  purpose:
+    "Send a token to another user, the token is resolved via the alias. Message is optional (empty string).",
   args: {
     name: "send",
-    alias: "gratitude",
+    alias: "alias1",
     users: ["@JohnDoe"],
     amount: 100,
-    message: "Thank you for your support!",
+    message: "{any message the user would like to include goes here}",
   },
 };
 
@@ -109,6 +120,19 @@ export const ExampleShareBalanceTask: DoTask = {
   args: {
     name: "shareBalance",
     alias: "alias1",
+  },
+};
+
+export const ExampleMintTask: DoTask = {
+  name: "mint",
+  purpose:
+    "Mint a token to another user, the token is resolved via the alias. Message is optional (empty string).",
+  args: {
+    name: "mint",
+    alias: "alias1",
+    users: ["@JohnDoe"],
+    amount: 100,
+    message: "{any message the user would like to include goes here}",
   },
 };
 
