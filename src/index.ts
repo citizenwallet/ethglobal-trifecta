@@ -12,8 +12,8 @@ import { handleAddOwnerCommand } from "./commands/addOwner";
 import { handleTokenAutocomplete } from "./autocomplete/token";
 import { handleSignupCommand } from "./commands/signup";
 import { handleSignupModal } from "./modals/signup";
-import { handleShowBalanceCommand } from "./commands/showBalance";
-import { handleShowAddressCommand } from "./commands/showAddress";
+import { handleShowBalanceCommand } from "./commands/shareBalance";
+import { handleShareAddressCommand } from "./commands/shareAddress";
 import { handleBurnManyCommand } from "./commands/burn-many";
 import { handleDoCommand } from "./commands/do";
 
@@ -89,7 +89,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
       await handleAddressCommand(interaction);
       break;
     case "share-address":
-      await handleShowAddressCommand(interaction);
+      await handleShareAddressCommand(interaction);
       break;
     case "transactions":
       await handleTransactionsCommand(interaction);

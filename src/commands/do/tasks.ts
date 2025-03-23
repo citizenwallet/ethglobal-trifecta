@@ -20,6 +20,11 @@ export interface BalanceTaskArgs {
   alias: string[];
 }
 
+export interface ShareAddressTaskArgs {
+  name: string;
+  alias: string;
+}
+
 export interface MissingInformationTaskArgs {
   name: string;
   missingInformation: string;
@@ -31,12 +36,19 @@ export interface ErrorTaskArgs {
 }
 
 export interface DoTask {
-  name: "send" | "address" | "balance" | "error" | "missingInformation";
+  name:
+    | "send"
+    | "address"
+    | "balance"
+    | "shareAddress"
+    | "error"
+    | "missingInformation";
   purpose: string;
   args:
     | SendTaskArgs
     | AddressTaskArgs
     | BalanceTaskArgs
+    | ShareAddressTaskArgs
     | ErrorTaskArgs
     | MissingInformationTaskArgs;
 }
@@ -70,6 +82,16 @@ export const ExampleBalanceTask: DoTask = {
   args: {
     name: "balance",
     alias: ["alias1", "alias2"],
+  },
+};
+
+export const ExampleShareAddressTask: DoTask = {
+  name: "shareAddress",
+  purpose:
+    "Share the user's address for the community they have specified (this will go in the alias field).",
+  args: {
+    name: "shareAddress",
+    alias: "alias1",
   },
 };
 

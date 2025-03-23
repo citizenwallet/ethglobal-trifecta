@@ -7,6 +7,7 @@ import {
   ExampleDoTask,
   ExampleErrorTask,
   ExampleMissingInformationTask,
+  ExampleShareAddressTask,
   GenericTaskArgs,
 } from "../commands/do/tasks";
 
@@ -68,7 +69,12 @@ export const parseDoTask = async (
   console.log("task", task);
   console.log(
     constructSystemPrompt(
-      [ExampleDoTask, ExampleAddressTask, ExampleBalanceTask],
+      [
+        ExampleDoTask,
+        ExampleAddressTask,
+        ExampleBalanceTask,
+        ExampleShareAddressTask,
+      ],
       communities
     )
   );
@@ -78,7 +84,12 @@ export const parseDoTask = async (
       {
         role: "system",
         content: constructSystemPrompt(
-          [ExampleDoTask, ExampleAddressTask, ExampleBalanceTask],
+          [
+            ExampleDoTask,
+            ExampleAddressTask,
+            ExampleBalanceTask,
+            ExampleShareAddressTask,
+          ],
           communities
         ),
       },

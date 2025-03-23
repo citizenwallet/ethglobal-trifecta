@@ -8,10 +8,12 @@ import {
   SendTaskArgs,
   AddressTaskArgs,
   BalanceTaskArgs,
+  ShareAddressTaskArgs,
 } from "./tasks";
 import { sendCommand } from "../send";
 import { addressCommand } from "../address";
 import { balanceCommand } from "../balance";
+import { shareAddressCommand } from "../shareAddress";
 
 export const handleDoCommand = async (
   client: Client,
@@ -51,6 +53,9 @@ export const handleDoCommand = async (
       break;
     case "balance":
       await balanceCommand(interaction, response as BalanceTaskArgs);
+      break;
+    case "shareAddress":
+      await shareAddressCommand(interaction, response as ShareAddressTaskArgs);
       break;
     case "missingInformation":
       const missingInformationResponse = response as MissingInformationTaskArgs;
