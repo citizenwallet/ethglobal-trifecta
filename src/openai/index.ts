@@ -55,6 +55,8 @@ const constructSystemPrompt = (
 
   prompt += `\n\n An ethereum address can look like this: 0x1234567890123456789012345678901234567890. Do not remove the 0x prefix or transform it in any way.`;
 
+  prompt += `\n\n An ENS address can look like this: citizenwallet.eth (or like a domain name). Do not remove the .eth (or other) suffix or transform it in any way. Do not prepend an @.`;
+
   prompt += `\n\n If the user's message is not clear or you cannot determine the task, return an error task with the following format: ${JSON.stringify(
     ExampleErrorTask.args
   )}`;
