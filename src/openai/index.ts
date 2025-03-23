@@ -23,7 +23,7 @@ const constructSystemPrompt = (
     const possibleTasksString = possibleTasks
       .map(
         (task) =>
-          `if it is a ${
+          `\nif it is a ${
             task.name
           } task, determine this by the following purpose: ${
             task.purpose
@@ -65,7 +65,9 @@ export const parseDoTask = async (
   communities: CommunityConfig[]
 ): Promise<GenericTaskArgs> => {
   console.log("task", task);
-  console.log(constructSystemPrompt([ExampleDoTask], communities));
+  console.log(
+    constructSystemPrompt([ExampleDoTask, ExampleAddressTask], communities)
+  );
   const response = await client.beta.chat.completions.parse({
     model: "gpt-4o-mini",
     messages: [

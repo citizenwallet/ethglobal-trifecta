@@ -12,6 +12,7 @@ export interface SendTaskArgs {
 
 export interface AddressTaskArgs {
   name: string;
+  alias: string[];
 }
 
 export interface MissingInformationTaskArgs {
@@ -49,9 +50,10 @@ export const ExampleDoTask: DoTask = {
 export const ExampleAddressTask: DoTask = {
   name: "address",
   purpose:
-    "Reveal the user's address for all their communities. Determine if they would like to know their address",
+    "Reveal the user's address for the communities they specify (these will go in the alias field). If they are not specific about which community, put all the community aliases in the alias field.",
   args: {
     name: "address",
+    alias: ["alias1", "alias2"],
   },
 };
 

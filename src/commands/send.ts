@@ -62,7 +62,7 @@ export const handleSendCommand = async (
 
   const message = interaction.options.getString("message");
 
-  await send(client, interaction, {
+  await sendCommand(client, interaction, {
     name: "send",
     alias,
     users: usersArray,
@@ -71,7 +71,7 @@ export const handleSendCommand = async (
   });
 };
 
-export const send = async (
+export const sendCommand = async (
   client: Client,
   interaction: ChatInputCommandInteraction,
   sendTaskArgs: SendTaskArgs

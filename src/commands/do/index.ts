@@ -6,8 +6,10 @@ import {
   ErrorTaskArgs,
   MissingInformationTaskArgs,
   SendTaskArgs,
+  AddressTaskArgs,
 } from "./tasks";
-import { send } from "../send";
+import { sendCommand } from "../send";
+import { addressCommand } from "../address";
 
 export const handleDoCommand = async (
   client: Client,
@@ -40,7 +42,10 @@ export const handleDoCommand = async (
 
   switch (response.name) {
     case "send":
-      await send(client, interaction, response as SendTaskArgs);
+      await sendCommand(client, interaction, response as SendTaskArgs);
+      break;
+    case "address":
+      await addressCommand(interaction, response as AddressTaskArgs);
       break;
     case "missingInformation":
       const missingInformationResponse = response as MissingInformationTaskArgs;
