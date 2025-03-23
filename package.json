@@ -1,7 +1,7 @@
 {
-    "name": "discord-bot",
+    "name": "discord-ai-wallet",
     "version": "1.0.0",
-    "description": "A Discord bot powered by discord.js",
+    "description": "A Discord bot that uses AI to help you manage your wallet",
     "main": "dist/index.js",
     "type": "commonjs",
     "scripts": {
