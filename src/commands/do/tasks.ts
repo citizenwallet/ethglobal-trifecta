@@ -15,6 +15,11 @@ export interface AddressTaskArgs {
   alias: string[];
 }
 
+export interface BalanceTaskArgs {
+  name: string;
+  alias: string[];
+}
+
 export interface MissingInformationTaskArgs {
   name: string;
   missingInformation: string;
@@ -26,11 +31,12 @@ export interface ErrorTaskArgs {
 }
 
 export interface DoTask {
-  name: "send" | "address" | "error" | "missingInformation";
+  name: "send" | "address" | "balance" | "error" | "missingInformation";
   purpose: string;
   args:
     | SendTaskArgs
     | AddressTaskArgs
+    | BalanceTaskArgs
     | ErrorTaskArgs
     | MissingInformationTaskArgs;
 }
@@ -53,6 +59,16 @@ export const ExampleAddressTask: DoTask = {
     "Reveal the user's address for the communities they specify (these will go in the alias field). If they are not specific about which community, put all the community aliases in the alias field.",
   args: {
     name: "address",
+    alias: ["alias1", "alias2"],
+  },
+};
+
+export const ExampleBalanceTask: DoTask = {
+  name: "balance",
+  purpose:
+    "Reveal the user's balance for the communities they specify (these will go in the alias field). If they are not specific about which community, put all the community aliases in the alias field.",
+  args: {
+    name: "balance",
     alias: ["alias1", "alias2"],
   },
 };

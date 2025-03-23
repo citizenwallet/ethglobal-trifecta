@@ -3,6 +3,7 @@ import OpenAI from "openai";
 import {
   DoTask,
   ExampleAddressTask,
+  ExampleBalanceTask,
   ExampleDoTask,
   ExampleErrorTask,
   ExampleMissingInformationTask,
@@ -66,7 +67,10 @@ export const parseDoTask = async (
 ): Promise<GenericTaskArgs> => {
   console.log("task", task);
   console.log(
-    constructSystemPrompt([ExampleDoTask, ExampleAddressTask], communities)
+    constructSystemPrompt(
+      [ExampleDoTask, ExampleAddressTask, ExampleBalanceTask],
+      communities
+    )
   );
   const response = await client.beta.chat.completions.parse({
     model: "gpt-4o-mini",
@@ -74,7 +78,7 @@ export const parseDoTask = async (
       {
         role: "system",
         content: constructSystemPrompt(
-          [ExampleDoTask, ExampleAddressTask],
+          [ExampleDoTask, ExampleAddressTask, ExampleBalanceTask],
           communities
         ),
       },
