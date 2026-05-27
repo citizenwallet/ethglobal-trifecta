@@ -4,6 +4,7 @@ dist/
 tx-channel-id
 .vercel
 
+.env
+
 
 .bot/
-config.bat
